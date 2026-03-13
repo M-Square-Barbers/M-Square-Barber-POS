@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>M Square Barbers · Professional POS System</title>
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -33,6 +33,37 @@
             color: #1e293b;
             height: 100vh;
             overflow: hidden;
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255,255,255,0.1);
+            padding: 3px;
+            border-radius: 40px;
+            margin-right: 10px;
+        }
+
+        .view-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            padding: 5px 10px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+
+        .view-btn.active {
+            background: #fbbf24;
+            color: #0f172a;
+        }
+
+        .view-btn i {
+            margin-right: 3px;
         }
 
         /* Login Screen */
@@ -123,6 +154,17 @@
             outline: none;
             border-color: #fbbf24;
             box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+        }
+
+        /* Remove autofill background */
+        .login-input:-webkit-autofill,
+        .login-input:-webkit-autofill:hover, 
+        .login-input:-webkit-autofill:focus, 
+        .login-input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            box-shadow: 0 0 0 30px white inset !important;
+            -webkit-text-fill-color: #1e293b !important;
+            caret-color: #1e293b;
         }
 
         .login-btn {
@@ -360,6 +402,7 @@
             padding: 0.5rem;
             border-radius: 50px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
         }
 
         .nav-tab {
@@ -369,6 +412,9 @@
             font-weight: 600;
             transition: 0.2s;
             color: #64748b;
+            flex: 1;
+            text-align: center;
+            min-width: 120px;
         }
 
         .nav-tab:hover {
@@ -451,12 +497,16 @@
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .loyalty-info {
             display: flex;
             align-items: center;
             gap: 1rem;
+            flex: 1;
+            min-width: 250px;
         }
 
         .loyalty-icon {
@@ -474,6 +524,7 @@
             display: flex;
             gap: 2rem;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .points-badge {
@@ -552,6 +603,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .card-title h2 {
@@ -736,6 +789,15 @@
             background: #059669;
         }
 
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
         /* Recent Invoices Table */
         .recent-invoices {
             background: white;
@@ -753,6 +815,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 600px;
         }
 
         th {
@@ -779,6 +842,7 @@
             border-radius: 40px;
             font-size: 0.75rem;
             font-weight: 600;
+            display: inline-block;
         }
 
         .action-icon {
@@ -786,10 +850,15 @@
             cursor: pointer;
             margin: 0 5px;
             transition: 0.2s;
+            font-size: 1.1rem;
         }
 
         .action-icon:hover {
             color: #fbbf24;
+        }
+
+        .action-icon.delete:hover {
+            color: #ef4444;
         }
 
         /* WhatsApp Broadcast Section */
@@ -940,6 +1009,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .appointment-card.pending {
@@ -958,6 +1029,60 @@
             border-left-color: #ef4444;
         }
 
+        .appointment-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .appointment-actions button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-confirm {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-complete {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-reminder {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-cancel {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* Working Hours - Fixed visibility */
+        .working-hours {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #000000 !important;
+            border: 1px solid #e2e8f0;
+            font-weight: 500;
+        }
+
+        .working-hours i {
+            color: #667eea;
+            margin-right: 5px;
+        }
+
         /* Admin Panel */
         .admin-panel {
             display: none;
@@ -973,6 +1098,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .admin-tabs {
@@ -988,6 +1115,11 @@
             cursor: pointer;
             border-radius: 8px 8px 0 0;
             font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .admin-tab:hover {
+            background: #f1f5f9;
         }
 
         .admin-tab.active {
@@ -1062,28 +1194,6 @@
             border: 1px solid #fbbf24;
         }
 
-        /* Working Hours */
-        .working-hours {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-            .header-right {
-                gap: 0.8rem;
-            }
-            .datetime {
-                display: none;
-            }
-        }
-
         /* Loyalty Points Display */
         .loyalty-points-display {
             background: #fef3c7;
@@ -1118,6 +1228,120 @@
             color: #ef4444;
             font-weight: 600;
         }
+
+        /* Mobile View Styles */
+        .mobile-view .header {
+            padding: 0.5rem 1rem;
+        }
+
+        .mobile-view .logo span {
+            display: none;
+        }
+
+        .mobile-view .datetime {
+            display: none;
+        }
+
+        .mobile-view .nav-tabs {
+            gap: 0.3rem;
+        }
+
+        .mobile-view .nav-tab {
+            padding: 0.5rem;
+            min-width: auto;
+            font-size: 0.8rem;
+        }
+
+        .mobile-view .nav-tab i {
+            margin-right: 3px;
+        }
+
+        .mobile-view .nav-tab span {
+            display: none;
+        }
+
+        .mobile-view .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .mobile-view .main-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .mobile-view .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .mobile-view .appointment-service-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .mobile-view .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .mobile-view .date-time-picker {
+            grid-template-columns: 1fr;
+        }
+
+        .mobile-view .admin-tabs {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-view .admin-tab {
+            text-align: center;
+        }
+
+        .mobile-view .loyalty-card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .mobile-view .loyalty-stats {
+            width: 100%;
+        }
+
+        .mobile-view .points-progress {
+            width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-right {
+                gap: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-right .datetime {
+                display: none;
+            }
+            
+            .header-right .header-support span {
+                display: none;
+            }
+            
+            .header-right .header-support i {
+                font-size: 1.2rem;
+            }
+            
+            .user-badge span {
+                display: none;
+            }
+            
+            .logout-btn span {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1135,8 +1359,8 @@
             
             <div id="loginError" class="login-error"></div>
             
-            <input type="email" id="loginEmail" class="login-input" placeholder="Email Address" value="hamza@example.com">
-            <input type="password" id="loginPassword" class="login-input" placeholder="Password" value="password123">
+            <input type="email" id="loginEmail" class="login-input" placeholder="Email Address" autocomplete="off" readonly onfocus="this.removeAttribute('readonly')">
+            <input type="password" id="loginPassword" class="login-input" placeholder="Password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly')">
             
             <button class="login-btn" onclick="loginWithEmail()">
                 <i class="fas fa-sign-in-alt"></i> Sign In
@@ -1181,9 +1405,18 @@
                 <span>M-SQUARE BARBERS SHOP · PRO POS</span>
             </div>
             <div class="header-right">
+                <!-- View Toggle -->
+                <div class="view-toggle" id="viewToggle">
+                    <button class="view-btn active" onclick="setViewMode('desktop')" id="desktopViewBtn">
+                        <i class="fas fa-desktop"></i> <span>Desktop</span>
+                    </button>
+                    <button class="view-btn" onclick="setViewMode('mobile')" id="mobileViewBtn">
+                        <i class="fas fa-mobile-alt"></i> <span>Mobile</span>
+                    </button>
+                </div>
                 <div class="datetime" id="liveDateTime"></div>
                 <a href="https://wa.me/923216175757" target="_blank" class="header-support">
-                    <i class="fab fa-whatsapp"></i> Support
+                    <i class="fab fa-whatsapp"></i> <span>Support</span>
                 </a>
                 <div class="user-badge" id="userBadge" onclick="showUserMenu()">
                     <i class="fas fa-user-circle"></i>
@@ -1191,7 +1424,7 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <button class="logout-btn" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
                 </button>
             </div>
         </div>
@@ -1200,16 +1433,16 @@
         <div class="dashboard-container">
             <div class="nav-tabs">
                 <div class="nav-tab active" onclick="switchMainTab('pos')">
-                    <i class="fas fa-cash-register"></i> POS
+                    <i class="fas fa-cash-register"></i> <span>POS</span>
                 </div>
                 <div class="nav-tab" onclick="switchMainTab('appointments')">
-                    <i class="fas fa-calendar-check"></i> Appointments
+                    <i class="fas fa-calendar-check"></i> <span>Appointments</span>
                 </div>
                 <div class="nav-tab" onclick="switchMainTab('customers')">
-                    <i class="fas fa-users"></i> Customers
+                    <i class="fas fa-users"></i> <span>Customers</span>
                 </div>
                 <div class="nav-tab" onclick="switchMainTab('loyalty')">
-                    <i class="fas fa-gem"></i> Loyalty Program
+                    <i class="fas fa-gem"></i> <span>Loyalty</span>
                 </div>
             </div>
         </div>
@@ -1300,12 +1533,12 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Customer Name *</label>
-                            <input type="text" id="custName" placeholder="Enter customer name" list="customerNames" onchange="checkCustomerLoyalty()">
+                            <input type="text" id="custName" placeholder="Enter customer name" list="customerNames" onchange="checkCustomerLoyalty()" autocomplete="off">
                             <datalist id="customerNames"></datalist>
                         </div>
                         <div class="form-group">
                             <label><i class="fab fa-whatsapp"></i> WhatsApp Number</label>
-                            <input type="tel" id="custPhone" placeholder="923XXXXXXXXX" onchange="checkCustomerLoyalty()">
+                            <input type="tel" id="custPhone" placeholder="923XXXXXXXXX" onchange="checkCustomerLoyalty()" autocomplete="off">
                         </div>
                     </div>
 
@@ -1399,7 +1632,7 @@
                     </div>
 
                     <div style="margin-bottom: 1rem;">
-                        <input type="text" placeholder="🔍 Search invoices..." style="width:100%; padding:0.8rem; border:1px solid #e2e8f0; border-radius:12px;" id="searchInput">
+                        <input type="text" placeholder="🔍 Search invoices..." style="width:100%; padding:0.8rem; border:1px solid #e2e8f0; border-radius:12px;" id="searchInput" autocomplete="off">
                     </div>
 
                     <!-- WhatsApp Broadcast Section -->
@@ -1418,7 +1651,7 @@
                                 <i class="fas fa-star"></i> Feedback
                             </div>
                             <div class="template-option" onclick="selectTemplate('social')">
-                                <i class="fas fa-share-alt"></i> Social Media
+                                <i class="fas fa-share-alt"></i> Social
                             </div>
                             <div class="template-option" onclick="selectTemplate('appointment')">
                                 <i class="fas fa-calendar-check"></i> Appointment
@@ -1525,28 +1758,28 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label><i class="fas fa-user"></i> Customer Name *</label>
-                        <input type="text" id="appointmentCustName" placeholder="Enter customer name" list="appointmentCustomerNames">
+                        <input type="text" id="appointmentCustName" placeholder="Enter customer name" list="appointmentCustomerNames" autocomplete="off">
                         <datalist id="appointmentCustomerNames"></datalist>
                     </div>
                     <div class="form-group">
                         <label><i class="fab fa-whatsapp"></i> WhatsApp Number *</label>
-                        <input type="tel" id="appointmentCustPhone" placeholder="923XXXXXXXXX">
+                        <input type="tel" id="appointmentCustPhone" placeholder="923XXXXXXXXX" autocomplete="off">
                     </div>
                 </div>
 
-                <!-- Working Hours Info -->
+                <!-- Working Hours Info - Fixed visibility -->
                 <div class="working-hours">
-                    <i class="fas fa-clock"></i> Working Hours: Monday - Saturday: 10:00 AM - 10:00 PM | Sunday: 10:00 AM - 10:00 PM
+                    <i class="fas fa-clock" style="color: #667eea;"></i> Working Hours: Monday - Saturday: 10:00 AM - 10:00 PM | Sunday: 10:00 AM - 10:00 PM
                 </div>
 
                 <div class="date-time-picker">
                     <div class="form-group">
                         <label><i class="fas fa-calendar"></i> Appointment Date *</label>
-                        <input type="text" id="appointmentDate" placeholder="Select date" class="datepicker">
+                        <input type="text" id="appointmentDate" placeholder="Select date" class="datepicker" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label><i class="fas fa-clock"></i> Appointment Time *</label>
-                        <input type="text" id="appointmentTime" placeholder="Select time" class="timepicker">
+                        <input type="text" id="appointmentTime" placeholder="Select time" class="timepicker" autocomplete="off">
                     </div>
                 </div>
 
@@ -1658,7 +1891,7 @@
                 </div>
 
                 <div style="margin-bottom: 1rem;">
-                    <input type="text" placeholder="🔍 Search customers..." style="width:100%; padding:0.8rem; border:1px solid #e2e8f0; border-radius:12px;" id="customerSearchInput" onkeyup="searchCustomers()">
+                    <input type="text" placeholder="🔍 Search customers..." style="width:100%; padding:0.8rem; border:1px solid #e2e8f0; border-radius:12px;" id="customerSearchInput" onkeyup="searchCustomers()" autocomplete="off">
                 </div>
 
                 <div class="table-container">
@@ -1808,6 +2041,7 @@
                 <div class="admin-tab active" onclick="switchAdminTab('staff')">Staff Management</div>
                 <div class="admin-tab" onclick="switchAdminTab('services')">Services</div>
                 <div class="admin-tab" onclick="switchAdminTab('expenses')">Expenses</div>
+                <div class="admin-tab" onclick="switchAdminTab('invoices')">Invoices</div>
                 <div class="admin-tab" onclick="switchAdminTab('reports')">Reports</div>
                 <div class="admin-tab" onclick="switchAdminTab('templates')">WhatsApp Templates</div>
                 <div class="admin-tab" onclick="switchAdminTab('loyalty')">Loyalty Settings</div>
@@ -1886,6 +2120,33 @@
                         </thead>
                         <tbody id="expensesTableBody">
                             <tr><td colspan="5">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Invoices Management - New Tab -->
+            <div class="admin-content" id="invoicesTab">
+                <div style="margin-bottom: 1.5rem;">
+                    <h3>Invoice Management</h3>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <input type="text" placeholder="🔍 Search invoices..." style="width:100%; padding:0.8rem; border:1px solid #e2e8f0; border-radius:12px;" id="adminInvoiceSearchInput" onkeyup="filterAdminInvoices()" autocomplete="off">
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Customer</th>
+                                <th>Services</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminInvoicesTableBody">
+                            <tr><td colspan="6">Loading invoices...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -2026,14 +2287,70 @@
                 <i class="fas fa-lock" style="font-size: 3rem; color: #fbbf24; margin-bottom: 1rem;"></i>
                 <h2 style="margin-bottom: 1.5rem;">Admin Access Required</h2>
                 <div class="form-group">
-                    <input type="text" id="loginUser" placeholder="Username" value="Hamza">
+                    <input type="text" id="loginUser" placeholder="Username" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="password" id="loginPass" placeholder="Password">
+                    <input type="password" id="loginPass" placeholder="Password" autocomplete="off">
                 </div>
                 <div style="display: flex; gap: 1rem;">
                     <button class="btn btn-primary" style="flex:1;" onclick="verifyAdmin()">Login</button>
                     <button class="btn btn-secondary" style="flex:1;" onclick="closeModal('passwordModal')">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Invoice Modal -->
+        <div class="modal" id="editInvoiceModal">
+            <div class="modal-content">
+                <h3 style="margin-bottom: 1.5rem;">Edit Invoice</h3>
+                <input type="hidden" id="editInvoiceId">
+                <div class="form-group">
+                    <label>Customer Name</label>
+                    <input type="text" id="editInvoiceCustomer" placeholder="Customer name" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="editInvoicePhone" placeholder="Phone number" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" id="editInvoiceAmount" placeholder="Amount" min="0" step="1">
+                </div>
+                <div class="form-group">
+                    <label>Discount</label>
+                    <input type="number" id="editInvoiceDiscount" placeholder="Discount" min="0" step="1" value="0">
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select id="editInvoicePayment">
+                        <option value="Cash">Cash</option>
+                        <option value="Easypaisa">Easypaisa</option>
+                        <option value="JazzCash">JazzCash</option>
+                        <option value="Card">Credit/Debit Card</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="editInvoiceNotes" rows="2" placeholder="Notes"></textarea>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn btn-primary" onclick="updateInvoice()">Update Invoice</button>
+                    <button class="btn btn-secondary" onclick="closeModal('editInvoiceModal')">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div class="modal" id="deleteConfirmModal">
+            <div class="modal-content" style="text-align: center;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem;"></i>
+                <h3 style="margin-bottom: 1rem;">Confirm Delete</h3>
+                <p id="deleteMessage" style="margin-bottom: 1.5rem;">Are you sure you want to delete this item?</p>
+                <input type="hidden" id="deleteId">
+                <input type="hidden" id="deleteType">
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn btn-danger" style="flex:1;" onclick="confirmDelete()">Delete</button>
+                    <button class="btn btn-secondary" style="flex:1;" onclick="closeModal('deleteConfirmModal')">Cancel</button>
                 </div>
             </div>
         </div>
@@ -2044,7 +2361,7 @@
                 <h3 style="margin-bottom: 1.5rem;">Add New Staff</h3>
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" id="staffNameInput" placeholder="Enter name">
+                    <input type="text" id="staffNameInput" placeholder="Enter name" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>Commission Percentage</label>
@@ -2064,7 +2381,7 @@
                 <input type="hidden" id="editStaffId">
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" id="editStaffNameInput" placeholder="Enter name">
+                    <input type="text" id="editStaffNameInput" placeholder="Enter name" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>Commission Percentage</label>
@@ -2083,7 +2400,7 @@
                 <h3 style="margin-bottom: 1.5rem;">Add New Service</h3>
                 <div class="form-group">
                     <label>Service Name</label>
-                    <input type="text" id="serviceNameInput" placeholder="e.g., Haircut">
+                    <input type="text" id="serviceNameInput" placeholder="e.g., Haircut" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>Price (PKR)</label>
@@ -2107,7 +2424,7 @@
                 <input type="hidden" id="editServiceId">
                 <div class="form-group">
                     <label>Service Name</label>
-                    <input type="text" id="editServiceNameInput" placeholder="e.g., Haircut">
+                    <input type="text" id="editServiceNameInput" placeholder="e.g., Haircut" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>Price (PKR)</label>
@@ -2130,7 +2447,7 @@
                 <h3 style="margin-bottom: 1.5rem;">Add Expense</h3>
                 <div class="form-group">
                     <label>Description</label>
-                    <input type="text" id="expenseDescInput" placeholder="e.g., Electricity bill">
+                    <input type="text" id="expenseDescInput" placeholder="e.g., Electricity bill" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>Category</label>
@@ -2160,7 +2477,7 @@
                 <h3 style="margin-bottom: 1.5rem;">Add WhatsApp Template</h3>
                 <div class="form-group">
                     <label>Template Name</label>
-                    <input type="text" id="templateNameInput" placeholder="e.g., Summer Promotion">
+                    <input type="text" id="templateNameInput" placeholder="e.g., Summer Promotion" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>Template Type</label>
@@ -2191,7 +2508,7 @@
                 <input type="hidden" id="editTemplateId">
                 <div class="form-group">
                     <label>Template Name</label>
-                    <input type="text" id="editTemplateNameInput" placeholder="e.g., Summer Promotion">
+                    <input type="text" id="editTemplateNameInput" placeholder="e.g., Summer Promotion" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>Template Type</label>
@@ -2366,6 +2683,9 @@
             initializeFlatpickr();
             setupEventListeners();
             updateDateTime();
+            // Load view mode preference
+            const savedView = localStorage.getItem('viewMode') || 'desktop';
+            setViewMode(savedView);
         });
 
         // Initialize Flatpickr for date/time pickers
@@ -2393,6 +2713,25 @@
             document.getElementById('discountInput').addEventListener('input', calculateTotal);
             document.getElementById('searchInput').addEventListener('input', filterInvoices);
             document.getElementById('customerSearchInput').addEventListener('keyup', searchCustomers);
+        }
+
+        // View mode toggle
+        function setViewMode(mode) {
+            const mainApp = document.getElementById('mainApp');
+            const desktopBtn = document.getElementById('desktopViewBtn');
+            const mobileBtn = document.getElementById('mobileViewBtn');
+            
+            if (mode === 'mobile') {
+                mainApp.classList.add('mobile-view');
+                desktopBtn.classList.remove('active');
+                mobileBtn.classList.add('active');
+            } else {
+                mainApp.classList.remove('mobile-view');
+                desktopBtn.classList.add('active');
+                mobileBtn.classList.remove('active');
+            }
+            
+            localStorage.setItem('viewMode', mode);
         }
 
         // Switch main tab
@@ -2461,7 +2800,8 @@
                     loyaltyPoints: doc.data().loyaltyPoints || 0,
                     totalPointsEarned: doc.data().totalPointsEarned || 0,
                     totalPointsRedeemed: doc.data().totalPointsRedeemed || 0,
-                    totalVisits: doc.data().totalVisits || 0
+                    totalVisits: doc.data().totalVisits || 0,
+                    lastVisitDate: doc.data().lastVisit?.toDate ? doc.data().lastVisit.toDate() : null
                 }));
 
                 // Load appointments
@@ -2632,6 +2972,11 @@
             updateCustomerSelect();
             updateCustomerDatalists();
             updateTemplatePreview();
+            
+            // Always update customers display
+            updateCustomersDisplay();
+            searchCustomers(); // This will populate the customers table
+            
             if (isAdmin) {
                 updateStaffTable();
                 updateServicesTable();
@@ -2639,6 +2984,7 @@
                 updateTemplatesTable();
                 updateAdminCustomersTable();
                 updateAdminAppointmentsTable();
+                updateAdminInvoicesTable();
             }
         }
 
@@ -3027,7 +3373,7 @@
                         <p><i class="fas fa-calendar"></i> ${dateStr}</p>
                         <p><i class="fas fa-cut"></i> ${servicesList}</p>
                         <p><i class="fas fa-user-tie"></i> Barber: ${app.barberName || 'N/A'}</p>
-                        <p><span class="status-badge status-${statusClass}">${statusClass.toUpperCase()}</span></p>
+                        <p><span class="status-badge">${statusClass.toUpperCase()}</span></p>
                     </div>
                     <div class="appointment-actions">
                         ${app.status === 'pending' ? `
@@ -3061,13 +3407,18 @@
             const search = document.getElementById('customerSearchInput').value.toLowerCase();
             const filtered = customersList.filter(c => 
                 c.name?.toLowerCase().includes(search) ||
-                c.phone?.toLowerCase().includes(search)
+                (c.phone && c.phone.toLowerCase().includes(search))
             );
             
             const tbody = document.getElementById('customersTableBody');
+            
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No customers found</td></tr>';
+                return;
+            }
+            
             tbody.innerHTML = filtered.map(customer => {
-                const lastVisit = customer.lastVisit?.toDate ? customer.lastVisit.toDate().toLocaleString() : 'Never';
-                const appointmentsCount = appointmentsList.filter(a => a.customerPhone === customer.phone).length;
+                const lastVisit = customer.lastVisitDate ? customer.lastVisitDate.toLocaleString() : 'Never';
                 
                 return `
                 <tr>
@@ -3119,6 +3470,160 @@
                     </td>
                 </tr>
             `}).join('');
+        }
+
+        // Filter admin invoices
+        function filterAdminInvoices() {
+            const search = document.getElementById('adminInvoiceSearchInput').value.toLowerCase();
+            const filtered = allInvoices.filter(inv => 
+                inv.customer?.toLowerCase().includes(search) ||
+                inv.id.toLowerCase().includes(search)
+            );
+            
+            updateAdminInvoicesTable(filtered);
+        }
+
+        // Update admin invoices table
+        function updateAdminInvoicesTable(invoices = allInvoices) {
+            const tbody = document.getElementById('adminInvoicesTableBody');
+            
+            if (invoices.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No invoices found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = invoices.map(inv => {
+                let servicesDisplay = '';
+                if (inv.services && Array.isArray(inv.services)) {
+                    servicesDisplay = inv.services.map(s => s.name).join(', ');
+                } else {
+                    servicesDisplay = inv.service || 'N/A';
+                }
+
+                return `
+                <tr>
+                    <td><strong>INV-${inv.id.slice(-6)}</strong></td>
+                    <td>${inv.customer || 'N/A'}</td>
+                    <td>${servicesDisplay}</td>
+                    <td><strong>Rs ${inv.amount || 0}</strong></td>
+                    <td>${inv.dateObj ? inv.dateObj.toLocaleString() : ''}</td>
+                    <td>
+                        <i class="fas fa-edit action-icon" onclick="editInvoice('${inv.id}')" title="Edit Invoice"></i>
+                        <i class="fas fa-trash action-icon delete" onclick="showDeleteConfirm('invoice', '${inv.id}')" title="Delete Invoice"></i>
+                        <i class="fas fa-print action-icon" onclick="printInvoice('${inv.id}')" title="Print"></i>
+                    </td>
+                </tr>
+            `}).join('');
+        }
+
+        // Edit invoice
+        function editInvoice(invoiceId) {
+            const invoice = allInvoices.find(i => i.id === invoiceId);
+            if (!invoice) return;
+
+            document.getElementById('editInvoiceId').value = invoice.id;
+            document.getElementById('editInvoiceCustomer').value = invoice.customer || '';
+            document.getElementById('editInvoicePhone').value = invoice.phone || '';
+            document.getElementById('editInvoiceAmount').value = invoice.amount || 0;
+            document.getElementById('editInvoiceDiscount').value = invoice.discount || 0;
+            document.getElementById('editInvoicePayment').value = invoice.payment || 'Cash';
+            document.getElementById('editInvoiceNotes').value = invoice.notes || '';
+            
+            document.getElementById('editInvoiceModal').style.display = 'flex';
+        }
+
+        // Update invoice
+        async function updateInvoice() {
+            const id = document.getElementById('editInvoiceId').value;
+            const customer = document.getElementById('editInvoiceCustomer').value.trim();
+            const phone = document.getElementById('editInvoicePhone').value.trim();
+            const amount = parseFloat(document.getElementById('editInvoiceAmount').value) || 0;
+            const discount = parseFloat(document.getElementById('editInvoiceDiscount').value) || 0;
+            const payment = document.getElementById('editInvoicePayment').value;
+            const notes = document.getElementById('editInvoiceNotes').value;
+            const total = Math.max(amount - discount, 0);
+
+            if (!customer || amount <= 0) {
+                alert('Customer name and valid amount are required');
+                return;
+            }
+
+            try {
+                await db.collection('sales').doc(id).update({
+                    customer: customer,
+                    phone: phone,
+                    amount: total,
+                    originalAmount: amount,
+                    discount: discount,
+                    payment: payment,
+                    notes: notes,
+                    updatedAt: new Date()
+                });
+
+                alert('Invoice updated successfully!');
+                closeModal('editInvoiceModal');
+                loadAllData();
+            } catch (error) {
+                console.error('Error updating invoice:', error);
+                alert('Error updating invoice');
+            }
+        }
+
+        // Show delete confirmation
+        function showDeleteConfirm(type, id) {
+            document.getElementById('deleteId').value = id;
+            document.getElementById('deleteType').value = type;
+            
+            let message = '';
+            if (type === 'invoice') {
+                message = 'Are you sure you want to delete this invoice? This action cannot be undone.';
+            } else if (type === 'staff') {
+                message = 'Are you sure you want to delete this staff member?';
+            } else if (type === 'service') {
+                message = 'Are you sure you want to delete this service?';
+            } else if (type === 'expense') {
+                message = 'Are you sure you want to delete this expense?';
+            } else if (type === 'template') {
+                message = 'Are you sure you want to delete this template?';
+            } else if (type === 'customer') {
+                message = 'Are you sure you want to delete this customer?';
+            } else if (type === 'appointment') {
+                message = 'Are you sure you want to delete this appointment?';
+            }
+            
+            document.getElementById('deleteMessage').textContent = message;
+            document.getElementById('deleteConfirmModal').style.display = 'flex';
+        }
+
+        // Confirm delete
+        async function confirmDelete() {
+            const id = document.getElementById('deleteId').value;
+            const type = document.getElementById('deleteType').value;
+            
+            try {
+                if (type === 'invoice') {
+                    await db.collection('sales').doc(id).delete();
+                } else if (type === 'staff') {
+                    await db.collection('staff').doc(id).delete();
+                } else if (type === 'service') {
+                    await db.collection('services').doc(id).delete();
+                } else if (type === 'expense') {
+                    await db.collection('expenses').doc(id).delete();
+                } else if (type === 'template') {
+                    await db.collection('templates').doc(id).delete();
+                } else if (type === 'customer') {
+                    await db.collection('customers').doc(id).delete();
+                } else if (type === 'appointment') {
+                    await db.collection('appointments').doc(id).delete();
+                }
+                
+                closeModal('deleteConfirmModal');
+                loadAllData();
+                alert('Item deleted successfully!');
+            } catch (error) {
+                console.error('Error deleting:', error);
+                alert('Error deleting item');
+            }
         }
 
         // Calculate total
@@ -3964,6 +4469,15 @@
             
             event.target.classList.add('active');
             document.getElementById(tab + 'Tab').classList.add('active');
+            
+            // Refresh data when switching to certain tabs
+            if (tab === 'invoices') {
+                updateAdminInvoicesTable();
+            } else if (tab === 'customers') {
+                updateAdminCustomersTable();
+            } else if (tab === 'appointments') {
+                updateAdminAppointmentsTable();
+            }
         }
 
         // Update staff table
@@ -3976,7 +4490,7 @@
                     <td>Rs ${staff.totalSales || 0}</td>
                     <td>
                         <i class="fas fa-edit action-icon" onclick="editStaff('${staff.id}')"></i>
-                        <i class="fas fa-trash action-icon" onclick="deleteStaff('${staff.id}')"></i>
+                        <i class="fas fa-trash action-icon delete" onclick="showDeleteConfirm('staff', '${staff.id}')"></i>
                     </td>
                 </tr>
             `).join('');
@@ -3992,7 +4506,7 @@
                     <td>${service.duration || 30} mins</td>
                     <td>
                         <i class="fas fa-edit action-icon" onclick="editService('${service.id}')"></i>
-                        <i class="fas fa-trash action-icon" onclick="deleteService('${service.id}')"></i>
+                        <i class="fas fa-trash action-icon delete" onclick="showDeleteConfirm('service', '${service.id}')"></i>
                     </td>
                 </tr>
             `).join('');
@@ -4008,7 +4522,7 @@
                     <td>Rs ${expense.amount}</td>
                     <td>${expense.date?.toDate().toLocaleString() || ''}</td>
                     <td>
-                        <i class="fas fa-trash action-icon" onclick="deleteExpense('${expense.id}')"></i>
+                        <i class="fas fa-trash action-icon delete" onclick="showDeleteConfirm('expense', '${expense.id}')"></i>
                     </td>
                 </tr>
             `).join('');
@@ -4024,7 +4538,7 @@
                     <td>${template.message.substring(0, 50)}...</td>
                     <td>
                         <i class="fas fa-edit action-icon" onclick="editTemplate('${template.id}')"></i>
-                        <i class="fas fa-trash action-icon" onclick="deleteTemplate('${template.id}')"></i>
+                        <i class="fas fa-trash action-icon delete" onclick="showDeleteConfirm('template', '${template.id}')"></i>
                     </td>
                 </tr>
             `).join('');
@@ -4033,19 +4547,26 @@
         // Update admin customers table
         function updateAdminCustomersTable() {
             const tbody = document.getElementById('adminCustomersTableBody');
+            
+            if (customersList.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7">No customers found</td></tr>';
+                return;
+            }
+            
             tbody.innerHTML = customersList.map(customer => {
-                const appointmentsCount = appointmentsList.filter(a => a.customerPhone === customer.phone).length;
+                const lastVisit = customer.lastVisitDate ? customer.lastVisitDate.toLocaleString() : 'Never';
                 return `
                 <tr>
                     <td>${customer.name || 'N/A'}</td>
                     <td>${customer.phone || 'N/A'}</td>
-                    <td>${customer.lastVisit?.toDate ? customer.lastVisit.toDate().toLocaleString() : 'N/A'}</td>
+                    <td>${lastVisit}</td>
                     <td>Rs ${customer.totalSpent || 0}</td>
                     <td><span class="loyalty-points-display"><i class="fas fa-star"></i> ${customer.loyaltyPoints || 0}</span></td>
                     <td>${customer.totalVisits || 0}</td>
                     <td>
                         <i class="fab fa-whatsapp action-icon" onclick="quickMessage('${customer.phone}', '${customer.name}')" title="Send WhatsApp"></i>
                         <i class="fas fa-history action-icon" onclick="showPointsHistory('${customer.phone}')" title="Points History"></i>
+                        <i class="fas fa-trash action-icon delete" onclick="showDeleteConfirm('customer', '${customer.id}')" title="Delete Customer"></i>
                     </td>
                 </tr>
             `}).join('');
@@ -4054,6 +4575,12 @@
         // Update admin appointments table
         function updateAdminAppointmentsTable() {
             const tbody = document.getElementById('adminAppointmentsTableBody');
+            
+            if (appointmentsList.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6">No appointments found</td></tr>';
+                return;
+            }
+            
             tbody.innerHTML = appointmentsList.map(app => {
                 const servicesList = app.services ? app.services.map(s => s.name).join(', ') : 'N/A';
                 return `
@@ -4062,12 +4589,12 @@
                     <td>${app.dateTimeObj?.toLocaleString() || 'N/A'}</td>
                     <td>${servicesList}</td>
                     <td>${app.barberName || 'N/A'}</td>
-                    <td><span class="status-badge status-${app.status || 'pending'}">${(app.status || 'pending').toUpperCase()}</span></td>
+                    <td><span class="status-badge">${(app.status || 'pending').toUpperCase()}</span></td>
                     <td>
                         <i class="fas fa-check-circle action-icon" onclick="updateAppointmentStatus('${app.id}', 'confirmed')" title="Confirm"></i>
                         <i class="fas fa-star action-icon" onclick="updateAppointmentStatus('${app.id}', 'completed')" title="Complete"></i>
                         <i class="fab fa-whatsapp action-icon" onclick="sendAppointmentReminder('${app.id}')" title="Send Reminder"></i>
-                        <i class="fas fa-times-circle action-icon" onclick="updateAppointmentStatus('${app.id}', 'cancelled')" title="Cancel"></i>
+                        <i class="fas fa-trash action-icon delete" onclick="showDeleteConfirm('appointment', '${app.id}')" title="Delete Appointment"></i>
                     </td>
                 </tr>
             `}).join('');
@@ -4137,17 +4664,6 @@
                 loadAllData();
             } catch (error) {
                 console.error('Error updating staff:', error);
-            }
-        }
-
-        // Delete staff
-        async function deleteStaff(id) {
-            if (!isAdmin || !confirm('Delete this staff member?')) return;
-            try {
-                await db.collection('staff').doc(id).delete();
-                loadAllData();
-            } catch (error) {
-                console.error('Error deleting staff:', error);
             }
         }
 
@@ -4221,17 +4737,6 @@
             }
         }
 
-        // Delete service
-        async function deleteService(id) {
-            if (!isAdmin || !confirm('Delete this service?')) return;
-            try {
-                await db.collection('services').doc(id).delete();
-                loadAllData();
-            } catch (error) {
-                console.error('Error deleting service:', error);
-            }
-        }
-
         // Show add expense modal
         function showAddExpenseModal() {
             if (!isAdmin) {
@@ -4263,17 +4768,6 @@
                 loadAllData();
             } catch (error) {
                 console.error('Error adding expense:', error);
-            }
-        }
-
-        // Delete expense
-        async function deleteExpense(id) {
-            if (!isAdmin || !confirm('Delete this expense?')) return;
-            try {
-                await db.collection('expenses').doc(id).delete();
-                loadAllData();
-            } catch (error) {
-                console.error('Error deleting expense:', error);
             }
         }
 
@@ -4348,17 +4842,6 @@
             }
         }
 
-        // Delete template
-        async function deleteTemplate(id) {
-            if (!isAdmin || !confirm('Delete this template?')) return;
-            try {
-                await db.collection('templates').doc(id).delete();
-                loadAllData();
-            } catch (error) {
-                console.error('Error deleting template:', error);
-            }
-        }
-
         // Export functions
         function exportExpenses() {
             const wsData = [['Description', 'Category', 'Amount', 'Date']];
@@ -4378,7 +4861,7 @@
                 wsData.push([
                     customer.name || 'N/A',
                     customer.phone || 'N/A',
-                    customer.lastVisit?.toDate ? customer.lastVisit.toDate().toLocaleString() : 'N/A',
+                    customer.lastVisitDate ? customer.lastVisitDate.toLocaleString() : 'N/A',
                     customer.totalSpent || 0,
                     customer.loyaltyPoints || 0,
                     customer.totalVisits || 0,
@@ -4469,7 +4952,7 @@
                 customersData.push([
                     c.name,
                     c.phone,
-                    c.lastVisit?.toDate ? c.lastVisit.toDate().toLocaleString() : 'N/A',
+                    c.lastVisitDate ? c.lastVisitDate.toLocaleString() : 'N/A',
                     c.totalSpent || 0,
                     c.loyaltyPoints || 0,
                     c.totalVisits || 0,
@@ -4570,6 +5053,16 @@
                 document.getElementById('editTemplateId').value = '';
                 document.getElementById('editTemplateNameInput').value = '';
                 document.getElementById('editTemplateMessageInput').value = '';
+            } else if (modalId === 'editInvoiceModal') {
+                document.getElementById('editInvoiceId').value = '';
+                document.getElementById('editInvoiceCustomer').value = '';
+                document.getElementById('editInvoicePhone').value = '';
+                document.getElementById('editInvoiceAmount').value = '';
+                document.getElementById('editInvoiceDiscount').value = '0';
+                document.getElementById('editInvoiceNotes').value = '';
+            } else if (modalId === 'deleteConfirmModal') {
+                document.getElementById('deleteId').value = '';
+                document.getElementById('deleteType').value = '';
             }
         }
 
